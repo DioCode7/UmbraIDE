@@ -1,5 +1,6 @@
 fastapi
 uvicorn
+psycopg[binary]
 sqlalchemy[asyncio]
 psycopg2-binary
 fastapi-mail
