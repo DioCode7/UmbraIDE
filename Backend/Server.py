@@ -17,7 +17,6 @@ import EmailConfig
 import Tables 
 import Security
 
-from Routes import LoginRoutes,ComunityRoutes,ItensRoutes,AuthRoutes,ConfigsRoute,Movements
 from Core import SetConfig
 
 engine = DatabaseConnect.engine
@@ -121,10 +120,6 @@ async def AuthMobileFunction(request:Request):
 
 
 
-app.include_router(ItensRoutes.router)
-app.include_router(Movements.router)
-app.include_router(AuthRoutes.router)
-app.include_router(ConfigsRoute.router)
 
 
 
