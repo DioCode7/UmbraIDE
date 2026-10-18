@@ -1,4 +1,7 @@
-import { UmbraTranslationsNexus } from "../../Umbra/Umbra.js";
+import { UmbraTranslationsNexus,UmbraAnimations, UmbraListenersControl,UmbraDOMControl,
+    UmbraComponentRender,UmbraRender,
+    UmbraScenes,
+ } from "../../Umbra/Umbra.js";
 
 //Imports
 
@@ -26,8 +29,9 @@ MainContainers:{
             position:"absolute",
             width:"100%",
             height:"100%",
-            //backgroundImage:["url(./Files/Images/LoginHeroImage.png)","url(./Files/Images/LoginHeroImageDark.png)"],
-            
+            backgroundImage:"url('../../Assets/LoginHeroBackground.png')",
+            opacity:["1",'0.3'],
+        
         }
     },
     LoginHeroPhrase:{
@@ -35,14 +39,25 @@ MainContainers:{
         Type:"div",
         UmbraClass:["BasicTitleClass"],
         Style:{
-            maxWidth:"80%",
+            width:"80%",
             height:"auto",
+            zIndex:"2",
             marginLeft:"10%",
-            marginTop:"15%",
+            marginTop:"18%",
             fontSize:"1.6rem",
+            opacity:"0",
+            scale:'1',
             color:["rgb(0, 0, 0)","rgb(255, 255, 255)"],
     },
     Text:UmbraTranslationsNexus.Get("LoginHeroPhraseTranslation"),
+    Listener:{
+    UmbraViewportLogic:{
+        Action:UmbraAnimations.Active,
+      Params:['LoginHeroPhraseAnimation','LoginHeroPhrase',"Main"],
+
+    },
+    }
+
 },
 }
     
@@ -54,8 +69,16 @@ MainContainers:{
     Style:{
       width:"35%",
       height:"100vh",
-      flexDirection:"column",
-      backgroundColor:["rgb(240,240,240)","rgb(5,5,5)"],
+      zIndex:"3",
+      backgroundColor:["rgb(240,240,240)","rgb(13, 13, 13)"],
+      boxShadow:["-5px 0px 10px rgba(183, 107, 255, 0.5)","-5px 0px 10px rgba(67, 0, 95, 0.5)"],
+    },
+    Listener:{
+    UmbraViewportLogic:{
+        Action:UmbraAnimations.Active,
+      Params:['LoginHeroPhraseAnimation','LoginActiveContainer',"Main"],
+
+    },
     },
     Childs:{
         LoginUmbraLogo:{
@@ -84,7 +107,7 @@ MainContainers:{
             UmbraClass:["BasicTextClass"],
             Style:{
                 transform:"translate(-50%, 0%)",
-                marginTop:"60px",
+                marginTop:"15px",
                 marginLeft:"50%",
             },
             Text:UmbraTranslationsNexus.Get("LoginUserTextTranslation"),
@@ -105,10 +128,11 @@ MainContainers:{
             UmbraClass:["BasicTextClass"],
             Style:{
                  transform:"translate(-50%, 0%)",
-                marginTop:"60px",
+                marginTop:"15px",
                 marginLeft:"50%",
             },
             Text:UmbraTranslationsNexus.Get("LoginPasswordTextTranslation"),
+            
         },
         LoginPasswordInput:{
             Id:"LoginPasswordInput",
@@ -127,7 +151,7 @@ MainContainers:{
             Type:"div",
             UmbraClass:["BasicButtonClass"],
             Style:{
-                marginTop:"70px",
+                marginTop:"15px",
                 marginLeft:"50%",
                 transform:"translate(-50%, 0%)",
             },
@@ -141,6 +165,33 @@ MainContainers:{
                 }
             }
         },
+        SignInText:{
+            Id:"SignInText",
+            Type:"div",
+            UmbraClass:["BasicTextClass"],
+            Style:{
+                marginTop:"15px",
+                marginLeft:"20px",
+                pointerEvents:"none",
+            },
+            Text:UmbraTranslationsNexus.Get("SignInTextTranslation"),
+            
+        },
+        SignInButton:{
+            Id:"SignInButton",
+            Type:"div",
+            UmbraClass:["BasicTextClass"],
+            Style:{
+                marginTop:"15px",
+                marginLeft:"20px",
+                zIndex:"2"
+            },
+
+           
+            Text:UmbraTranslationsNexus.Get("SignInButtonTranslation"),
+            Listener:"SignInButtonListener"
+
+        }
 
     },
 },
@@ -149,5 +200,3 @@ MainContainers:{
 
 
 };
-
-//Functions

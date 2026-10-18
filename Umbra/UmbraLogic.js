@@ -289,17 +289,21 @@ export function UmbraLogicCore(Window=document,Win=window){
      UmbraKeyboardVirtualDispatcher(event,WindowName)
     });
 
-    
+    if(Win.name == ''){
+    Win.name = "Main";
+    }
   Win.addEventListener('DOMContentLoaded',(event)=>{
 
 let WindowState = JSON.parse(Win.sessionStorage.getItem('UmbraWindowState'));
      Win.console.warn('Recarregando2')
      let UmbraCoreBruteRef = UmbraCoreBrute;
+     if(WindowState){
   if(WindowState.Scene && UmbraCoreBruteRef.UmbraDOM.UiModule.UmbraScenes.Verify(WindowState.Scene)){
     UmbraCoreBruteRef.UmbraDOM.UiModule.UmbraScenes.TurnOffAll(Win.name);
     Win.console.warn('Recarregando666')
    UmbraCoreBruteRef.UmbraDOM.UiModule.UmbraScenes.Active(WindowState.Scene,null,false,{Name:Win.name,Title:'oi',Favicon:''});
   }
+}
   });
 
   Win.addEventListener('beforeunload',(event)=>{

@@ -1,13 +1,18 @@
 import {UmbraLogicCore} from './UmbraLogic.js';
 import { UmbraCoreBrute } from "./Core.js";
 import { UmbraTranslationsNexus,UmbraCore, UmbraApplyStyles, UmbraNetworkControl,UmbraClassesControl,UmbraPresetsControl, UmbraListenersControl, UmbraScenes, UmbraNexus, Languages, UmbraGlobalStorage, UmbraPopUps, UmbraAnimations } from "./Umbra.js";
-import { UmbraDOM } from "./UmbraUI.js";
+import { UmbraAnimationLoop, UmbraDOM } from "./UmbraUI.js";
 
 
-UmbraLogicCore(window.document,window);
+//UmbraLogicCore(window.document,window);
+UmbraAnimationLoop(window);
+
 let Monarch = window.opener;
 console.warn('Monarch',Monarch.Umbral);
 console.warn('Genesis',Monarch.Umbral.Genesis);
+
+UmbraCoreBrute.UmbraDOM.Windows = Monarch.Umbral.UmbraDOM.Windows;
+UmbraCoreBrute.UmbraDOM.UmbraWindows = Monarch.Umbral.UmbraDOM.UmbraWindows;
 
 let Genesis = [];
 if(Array.isArray(Monarch.Umbral.Genesis)){
@@ -33,3 +38,5 @@ console.warn('UmbraCore',UmbraCoreBrute);
 
    
 
+UmbraCoreBrute.UmbraDOM.UmbraWindowsData = Monarch.Umbral.UmbraDOM.UmbraWindowsData;
+document.title = UmbraCoreBrute.UmbraDOM.UmbraWindowsData[window.name].Title;

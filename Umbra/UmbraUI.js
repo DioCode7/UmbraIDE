@@ -612,7 +612,7 @@ function ActiveUmbraScene(SceneID,ContainerStyle = null,Blank=false,Window={Name
 };
 
 
-function UmbraNewWindow(WindowName,Title=window.document.title,favicon){
+function UmbraNewWindow(WindowName,Title=window.document.title,favicon=false){
   let NewWindow = window.open('Umbra/UmbraWindow.html',WindowName);
   
        UmbraCoreBrute.UmbraDOM.UmbraWindows[WindowName] = NewWindow;
@@ -636,14 +636,15 @@ ActiveElements:[],
        //UmbraCoreBrute.UmbraLogic.LogicModule.UmbraLogicCore(NewWindow.document,NewWindow);
        
  
-       UmbraAnimationLoop(NewWindow);
-       NewWindow.document.title = Title;
+    UmbraAnimationLoop(NewWindow);
+    NewWindow.document.title = Title;
+       if(favicon){
        let Favicon = NewWindow.document.createElement('link');
-
        Favicon.rel = "icon";
        NewWindow.document.head.appendChild(Favicon);
        Favicon.href = favicon;
        Favicon.type = "image/x-icon";
+       }
 }
 
 function GetWindow(Id){
@@ -2105,7 +2106,7 @@ function UmbraActiveAnimation(Id,Element,Window='Main'){
     UmbraCoreBrute.UmbraDOM.AnimationsNexus[Id].State = 'Active';
     
         let NewAnimationObj = structuredClone(UmbraCoreBrute.UmbraDOM.AnimationsNexus[Id]);
-        NewAnimationObj = UmbraAnimationsSpeedCalc(NewAnimationObj,Element);
+        NewAnimationObj = UmbraAnimationsSpeedCalc(NewAnimationObj,Element,Window);
         
         let DeclaredTime = NewAnimationObj.Time;
         let DeclaredFrameRate = NewAnimationObj.FrameRate;
@@ -2193,7 +2194,8 @@ function UmbraAnimationRender(AnimationConfig,Element,Id){
     
        
     let Win = UmbraMultiWindows.Get(AnimationConfig.Window);
-       Win.console.warn('Rodando Animação')
+       Win.console.warn('Rodando Animação',AnimationConfig.Window)
+       
     if(!Win.document.getElementById(Element)){
     delete UmbraCoreBrute.UmbraDOM.ActiveAnimations[Id + Element + AnimationConfig.PropertieName];
      delete UmbraCoreBrute.UmbraDOM.Windows[AnimationConfig.Window].ActiveAnimations[Id + Element + AnimationConfig.PropertieName];
@@ -2356,7 +2358,7 @@ ActualValue.push(AnimationConfig.RealStartIn[i] + Speed * Time);
     UmbraCoreBrute.UmbraDOM.Windows[AnimationConfig.Window].DeclaredStyles[Element]['Style'][AnimationConfig.PropertieName] = ActualValue + Metric;
         }
     }
-    UmbraUI.UmbraApplyStyle(Element,{backgroundColor:'red'},'Declared',true,AnimationConfig.Window);
+    UmbraUI.UmbraApplyStyle(Element,{backgroundColor:'red'},'Declared',true,false,AnimationConfig.Window);
 
     }
 
@@ -2370,12 +2372,12 @@ ActualValue.push(AnimationConfig.RealStartIn[i] + Speed * Time);
 
 }
 
-function UmbraAnimationLoop(Window){
+export function UmbraAnimationLoop(Window){
     for(let Animation in UmbraCoreBrute.UmbraDOM.Windows[Window.name]?.ActiveAnimations){
         try{
             if(UmbraCoreBrute.UmbraDOM.Windows[Window.name].ActiveAnimations[Animation]){
-    UmbraAnimationRender( UmbraCoreBrute.UmbraDOM.Windows[Window.name].ActiveAnimations[Animation].AnimationConfig,
-    UmbraCoreBrute.UmbraDOM.Windows[Window.name].ActiveAnimations[Animation].Element,UmbraCoreBrute.UmbraDOM.Windows[Window.name].ActiveAnimations[Animation]?.Id )
+    UmbraAnimationRender(UmbraCoreBrute.UmbraDOM.Windows[Window.name].ActiveAnimations[Animation].AnimationConfig,
+    UmbraCoreBrute.UmbraDOM.Windows[Window.name].ActiveAnimations[Animation].Element,UmbraCoreBrute.UmbraDOM.Windows[Window.name].ActiveAnimations[Animation]?.Id)
     }    
 }catch(e){
         console.error(e,UmbraCoreBrute.UmbraDOM.ActiveAnimations[Animation]?.Id);

@@ -75,7 +75,7 @@ UmbraClassesControl.Create("BasicInputClass",{
     color:["rgb(0, 0, 0)","rgb(255, 255, 255)"],
     width:"250px",
     height:"10px",
-    backgroundColor:["rgb(255, 255, 255)","rgb(20, 20, 20)"],
+    backgroundColor:["rgb(255, 255, 255)","rgb(12, 12, 12)"],
     
 });
 
@@ -90,6 +90,18 @@ UmbraClassesControl.Create("BasicTextClass",{
     color:["rgb(0, 0, 0)","rgb(255, 255, 255)"],
 });
 
+
+UmbraClassesControl.Create("BasicSmallTextClass",{
+    fontFamily:"'Poppins', sans-serif",
+    fontWeight:"300",
+    textAlign:"start",
+    lineHeight:"1rem",
+    userSelect:"none",
+    letterSpacing:"2px",
+    textShadow:["0px 0px 5px rgba(0, 0, 0, 0.5)","0px 0px 5px rgba(255, 255, 255, 0.5)"],
+    color:["rgb(17, 17, 17)","rgb(255, 255, 255)"],
+});
+
 UmbraClassesControl.Create("BasicButtonClass",{
     UmbraMerge:["BasicTextClass"],
     textAlign:"center",
@@ -99,9 +111,22 @@ UmbraClassesControl.Create("BasicButtonClass",{
     borderRadius:"4px",
     width:"250px",
     height:"40px",
-    backgroundColor:["rgb(121, 121, 121)","rgb(15, 15, 15)"],
+    backgroundColor:["rgb(222, 142, 253)","rgb(21, 0, 44)"],
     outline:"none",
     border:"none",
+    boxShadow:"none",
+});
+
+
+UmbraClassesControl.Create("SimpleTextButtonClass",{
+    UmbraMerge:["BasicTextClass"],
+    textAlign:"start",
+    justifyContent:"center",
+    alignItems:"center",
+    display:"flex",
+    backgroundColor:"rgba(0,0,0,0)",
+    width:"320px",
+    outline:"none",
     boxShadow:"none",
 });
 

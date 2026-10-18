@@ -27,8 +27,29 @@ UmbraTranslationsNexus.Add("LoginButtonTranslation",{
 }
 );
 
+
+
 UmbraTranslationsNexus.Add("LoginPasswordTextTranslation",{
     "Pt-Br":"Senha",
     "En":"Password"
+}
+);
+
+UmbraTranslationsNexus.Add("SignInTextTranslation",{
+    "Pt-Br":"Não tem uma conta?",
+    "En":"Don't have an account?"
+}
+);
+
+UmbraTranslationsNexus.Add("SignInButtonTranslation",{
+    "Pt-Br":"Cadastre-se",
+    "En":"Sign Up"
+}
+);
+
+
+UmbraTranslationsNexus.Add("LoginTextTranslation",{
+    "Pt-Br":"Já tem uma conta?",
+    "En":"Already have an account?"
 }
 );
