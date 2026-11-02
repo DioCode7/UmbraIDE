@@ -8,7 +8,7 @@ import {UmbraScenesBrute,UmbraPageRender, UmbraDOM,UmbraAnimationsCore,UmbraPres
     UmbraMultiWindows
  } from "./UmbraUI.js";
 import { UmbraTranslationsCore } from "./UmbraTranslations.js";
-import { UmbraListeners,AwaitFlag,UmbraGlobalFunctionsCore, UmbraGlobalStorageCore } from "./UmbraLogic.js";
+import { UmbraListeners,AwaitFlag,UmbraGlobalFunctionsCore, UmbraGlobalStorageCore,UmbraVirtualMethods } from "./UmbraLogic.js";
 import { UmbraNetwork } from "./UmbraNetwork.js";
 
 
@@ -35,6 +35,7 @@ export let UmbraWindows = UmbraMultiWindows;
 export let UmbraGlobalFunctionsControl = UmbraGlobalFunctionsCore;
 export let UmbraPopUps = UmbraPopUpsControl;
 export let UmbraOverlays = UmbraOverlaysControl;
+export let VirtualUmbra = UmbraVirtualMethods;
 export const Umbra = {
     Genesis:Genesis
 };

@@ -2,6 +2,7 @@
 import {UmbraCore, UmbraScenes,UmbraListenersControl,UmbraWindows} from "../Umbra/Umbra.js"
 import { LoginSceneLayout_Blueprint } from "./Layouts/LoginLayout.js";
 import { SignInSceneLayout_Blueprint } from "./Layouts/SignInLayout.js";
+import { MainPageLayout_Blueprint } from "./Layouts/MainPageLayout.js";
 
 
 //Vars
@@ -66,3 +67,37 @@ UmbraListenersControl.Add("SignInButtonListener",{
                 },
 },"Main");
 
+export function MainPageSceneTrigger(){
+if(UmbraScenes.Verify("MainPageScene")){
+ UmbraScenes.Active("MainPageScene");
+
+}else{
+  
+UmbraScenes.New("MainPageScene",MainPageLayout_Blueprint,{
+backgroundColor:["white","rgb(12,12,12)"],
+display:"flex",
+width:"100vw",
+height:"100vh",
+overflow:"hidden",
+});
+
+console.log(UmbraCore.UmbraDOM.Windows);
+UmbraScenes.TurnOffAll(window.name);
+ UmbraScenes.Active("MainPageScene");
+ 
+}
+};
+
+
+UmbraListenersControl.Add("LoginButtonListener",{
+  UmbraHover:{
+                    Style:{
+                        scale:"1.05",
+                        marginLeft:"51%",
+                    }
+                },
+                UseFn:true,
+                Fn:()=>{
+                    MainPageSceneTrigger();
+                },
+},"Main");

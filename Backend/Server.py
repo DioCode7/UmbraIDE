@@ -16,6 +16,7 @@ from DatabaseConnect import DatabaseQueryActions,RegistConfigsDB,SessionLocal,Up
 import EmailConfig
 import Tables 
 import Security
+from Routes import SignInRoute
 
 from Core import SetConfig
 
@@ -134,6 +135,9 @@ def TemporaryUserRegister():
 
 
 TemporaryUserRegister();
+
+
+app.include_router(SignInRoute.router)
 
 
 

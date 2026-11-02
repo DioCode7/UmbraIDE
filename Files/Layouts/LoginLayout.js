@@ -3,6 +3,7 @@ import { UmbraTranslationsNexus,UmbraAnimations, UmbraListenersControl,UmbraDOMC
     UmbraScenes,
  } from "../../Umbra/Umbra.js";
 
+
 //Imports
 
 
@@ -156,14 +157,7 @@ MainContainers:{
                 transform:"translate(-50%, 0%)",
             },
             Text:UmbraTranslationsNexus.Get("LoginButtonTranslation"),
-            Listener:{
-                UmbraHover:{
-                    Style:{
-                        scale:"1.05",
-                        marginLeft:"51%",
-                    }
-                }
-            }
+            Listener:"LoginButtonListener",
         },
         SignInText:{
             Id:"SignInText",

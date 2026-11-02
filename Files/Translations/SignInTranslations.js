@@ -21,6 +21,13 @@ UmbraTranslationsNexus.Add("SignInActiveContainerTitle2Translation",{
 }
 );
 
+
+UmbraTranslationsNexus.Add("SignInActiveContainerTitleThreeTranslation",{
+    "Pt-Br":"Quase Lá!",
+    "En":"Almost There!"
+}
+);
+
 UmbraTranslationsNexus.Add("SignInActiveContainerTextTranslation",{
     "Pt-Br":"Informe Seu Email",
     "En":"Enter Your Email"
@@ -31,6 +38,14 @@ UmbraTranslationsNexus.Add("SignInActiveContainerTwoTextTranslation",{
     "Pt-Br":"Senha",
     "En":"Password"
 }
+);
+
+
+UmbraTranslationsNexus.Add("SignInActiveContainerTextThreeTranslation",{
+    "Pt-Br":"Crie Um Nome de Usuário",
+    "En":"Create a Username"
+}
+
 );
 
 
