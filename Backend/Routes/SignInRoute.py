@@ -26,8 +26,8 @@ from Security import BuildResponse
 #Funções
 
 router = APIRouter(
-    prefix="/AuthRoutes",
-    tags=["AuthRoutes"]
+    prefix="/SignInRoute",
+    tags=["SignInRoute"]
 )
 
 

@@ -59,7 +59,7 @@ let SignInStepsDispatcher = {
      UmbraGlobalStorage.Get("SignInPasswordConfirm").Value,
     UmbraGlobalStorage.Get("SignInUserName").Value); 
 
-   VirtualUmbra.Click("SignInFetch",window.name);
+   VirtualUmbra.Click("SignInFetch");
     
     },
 
@@ -162,14 +162,14 @@ UmbraGlobalStorage.Storaged("SignInStep",{
 UmbraListenersControl.Add("SignInFetch",{
 UseFn:true,
  UmbraFetch:{
-      Route:'SignInProtocol',
+      Route:'SignInFetch',
       Method:'POST',
       
       Data:async()=>({
         UserName:UmbraGlobalStorage.Get("SignInUserName").Value,
         Email:UmbraGlobalStorage.Get("SignInEmail").Value,
         Password:UmbraGlobalStorage.Get("SignInPassword").Value,
-        ConfirmPassword:UmbraGlobalStorage.Get("SignInConfirmPassword").Value,
+        ConfirmPassword:UmbraGlobalStorage.Get("SignInPasswordConfirm").Value,
 
     }),
   
