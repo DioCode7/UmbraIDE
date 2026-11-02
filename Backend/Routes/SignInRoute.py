@@ -15,7 +15,7 @@ import EmailConfig
 import Tables
 from Schemas import EmailSchema
 from DatabaseConnect import insert,DatabaseQueryActions
-from Tables import EmailVerification, Usuarios
+from Tables import EmailVerification, Users
 from EmailConfig import EmailVerificationGenerator, EmailVerificationEnv
 from Security import BuildResponse
 #Variáveis
