@@ -46,7 +46,7 @@ async def PasswordVerification(Password:str,ConfirmPassword:str):
      
     return True
 
-router.post("/SignInProtocol")
+@router.post("/SignInProtocol")
 async def SignInProtocol(request: Request):
     # Extrair os dados do corpo da requisição
     data = await request.json()
